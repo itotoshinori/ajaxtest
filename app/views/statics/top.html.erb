@@ -1,0 +1,31 @@
+ <!-- 見出し -->
+<h1>Statics#top</h1>
+
+<!--  タグでファイル名を表示  -->
+<p>Find me in app/views/statics/top.html.erb</p>
+
+<!--  デフォルトで表示されている内容  -->
+<div id="ajax-test">
+   <%=@body %>
+</div>
+
+<!--  入力フォームをform_withで作成  -->
+<div id="ajax-request">
+  <!-- form_withのパスを「ajax_updateアクション」に紐付ける -->
+  <%= form_with url: statics_ajax_update_path do |f| %>
+    <!--  入力フォーム  -->
+    <%= f.text_field :data, id:"content" %>
+    <%= hidden_field_tag :num, @id %>
+    <!--  送信ボタン  -->
+    <%= f.submit 'Post Ajax' %>
+    <button type="button" id="inputClearBtn">入力をクリアする</button>
+  <% end %>
+</div>
+
+<script>
+$(function() {
+    $("#inputClearBtn").click(function() {
+        $("#content").val("");
+    });
+});
+</script>
