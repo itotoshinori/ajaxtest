@@ -6,10 +6,10 @@ class StaticsController < ApplicationController
   def ajax_update
     # topページにある「data(入力フォーム)」のパラメーターを@textに代入
     @text = params[:data]
+    @kousin = "(データが更新されました!)"
     num = params[:num]
     content = Content.find(num)
     content.body = @text
     content.save
-    @body = @text
   end
 end
